@@ -7,7 +7,9 @@ describe TripService do
 
   context "when no user is logged in" do
     it "raises a not logged in exception" do
-      expect { trip_service.get_trip_by_user(User.new, logged_user: nil) }.to raise_error(UserNotLoggedInException)
+      expect {
+        trip_service.get_trip_by_user(User.new, logged_user: nil) 
+      }.to raise_error(UserNotLoggedInException)
     end
   end
 
