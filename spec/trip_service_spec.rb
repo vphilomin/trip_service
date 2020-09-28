@@ -25,6 +25,7 @@ describe TripService do
     before do
       session_instance = instance_double(UserSession, :get_logged_user => logged_user)
       allow(session).to receive(:get_instance).and_return(session_instance)
+      allow(TripDAO).to receive(:find_trips_by_user).with(user).and_return([trip])
     end
 
     it "returns an empty trip list when requesting trips of a user that is not a friend" do
@@ -34,7 +35,6 @@ describe TripService do
 
     it "returns the actual trips of a friend user" do
       allow(user).to receive(:friend?).with(logged_user).and_return(true)
-      allow(TripDAO).to receive(:find_trips_by_user).with(user).and_return([trip])
 
       trip_list = trip_service.get_trip_by_user(user)
       expect(trip_list).to contain_exactly(trip)
