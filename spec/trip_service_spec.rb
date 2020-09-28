@@ -4,7 +4,6 @@ require_relative '../trip/trip'
 
 describe TripService do
   let(:trip_service) { TripService.new }
-  let(:session) { class_double(UserSession).as_stubbed_const }
 
   context "when no user is logged in" do
     it "raises a not logged in exception" do
