@@ -11,14 +11,7 @@ class TripService
     is_friend = false
 
     if(!logged_user.nil?)
-      user.get_friends.each do |f|
-        if(f.equal? logged_user)
-          is_friend = true
-          break
-        end
-      end
-
-      if(is_friend)
+      if(user.friend?(logged_user))
         trip_list = TripDAO.find_trips_by_user(user)
       end
 

@@ -19,4 +19,8 @@ class User
     def trips
         @trips
     end
+
+    def friend?(another_user)
+      return @friends.include?(another_user)
+    end
 end
