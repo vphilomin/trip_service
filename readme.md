@@ -1,7 +1,9 @@
 Testing legacy code: Hard-wired dependencies
 ============================================
 
-Code related to my [Testing legacy code: Hard-wired dependencies][1] blog post. Try not reading the blog post before doing the exercise yourself.
+This is my attempt using rspec to tackle this Kata. It is common in ruby to have class methods that do a little piece of work. Therefore, I didn't feel like TripDAO needed a dependency injection. rspec just allows this method to be easily stubbed out.
+
+Code related to [Testing legacy code: Hard-wired dependencies][1] blog post. Try not reading the blog post before doing the exercise yourself.
 
 What is it about?
 -----------------
