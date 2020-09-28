@@ -19,7 +19,7 @@ describe TripService do
 
   context "when user is logged in" do
     let(:logged_user) { User.new }
-    let(:user) { User.new }
+    let(:user) { instance_double(User, :friend? => false) }
     let(:trip) { Trip.new }
 
     before do
@@ -33,7 +33,7 @@ describe TripService do
     end
 
     it "returns the actual trips of a friend user" do
-      user.add_friend(logged_user)
+      allow(user).to receive(:friend?).with(logged_user).and_return(true)
       allow(TripDAO).to receive(:find_trips_by_user).with(user).and_return([trip])
 
       trip_list = trip_service.get_trip_by_user(user)
